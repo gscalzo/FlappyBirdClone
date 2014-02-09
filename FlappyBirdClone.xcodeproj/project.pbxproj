@@ -11,8 +11,6 @@
 		4EE970650268ACE8E1CBCF32 /* top_pipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE976FACD69F384B377A932 /* top_pipe.png */; };
 		4EE9708433F72E9E2C0422E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97CFB4536A66617395597 /* InfoPlist.strings */; };
 		4EE972ECB89740CF90C2CF31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE971449CAE017B518350FD /* UIKit.framework */; };
-		4EE973F3F139662B91A2C11F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97D600F72C610F17CFB4A /* background.png */; };
-		4EE973FE20BAD46E9CC2DDC9 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97EE00382DADA146E001F /* Spaceship.png */; };
 		4EE9743357D96D36C3D36B89 /* FlappyBirdCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE974F73CF9FDD551A3AF31 /* FlappyBirdCloneTests.m */; };
 		4EE97456259E05CDE810115B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE976B788FA6C18C527ECA6 /* Foundation.framework */; };
 		4EE9757B212F69E3D6B191F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EE974A5A5847D6EE172ADA5 /* Main.storyboard */; };
@@ -28,6 +26,7 @@
 		4EE97D5F0A7F3BE0BE971A54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9704962A25B2419AB9983 /* CoreGraphics.framework */; };
 		4EE97F08C45A01A1ED2296D1 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9711D0D368309017D35F4 /* SpriteKit.framework */; };
 		4EE97F0E522875EFF9389446 /* FRPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97EB54AF921AFBBC7332A /* FRPViewController.m */; };
+		4EE97F2BA8FF4E3FBCF61419 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9747FB4624B846C2642C3 /* background.png */; };
 		4EE97F668D5EF1D06239B71B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9767BF53C3DBC97A15D6B /* XCTest.framework */; };
 		4EE97FE2113B2AEC5F3E3CDD /* FRPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE977C76ED84ACEC3D4A962 /* FRPAppDelegate.m */; };
 /* End PBXBuildFile section */
@@ -50,6 +49,7 @@
 		4EE97403CB904E70F9597A54 /* FRPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRPAppDelegate.h; sourceTree = "<group>"; };
 		4EE974128046DACE4684BB74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EE974376DB735C0CEFA7451 /* FlappyBirdCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyBirdCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EE9747FB4624B846C2642C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		4EE974F73CF9FDD551A3AF31 /* FlappyBirdCloneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlappyBirdCloneTests.m; sourceTree = "<group>"; };
 		4EE97540E77ECEB447996D7F /* FRPMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRPMyScene.h; sourceTree = "<group>"; };
 		4EE9754681896EEF03A9FABB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -68,9 +68,7 @@
 		4EE97C7CB5BA3E7FF8669D90 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
 		4EE97CE9268227A46AF2B724 /* FlappyBirdClone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "FlappyBirdClone-Info.plist"; sourceTree = "<group>"; };
 		4EE97CEBD8A9DE3F9F8B18B1 /* FRPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRPViewController.h; sourceTree = "<group>"; };
-		4EE97D600F72C610F17CFB4A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		4EE97EB54AF921AFBBC7332A /* FRPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRPViewController.m; sourceTree = "<group>"; };
-		4EE97EE00382DADA146E001F /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		4EE97F8B76D29CA588164E2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +119,6 @@
 				4EE97EB54AF921AFBBC7332A /* FRPViewController.m */,
 				4EE97540E77ECEB447996D7F /* FRPMyScene.h */,
 				4EE97B16A7B7E42A1AC40820 /* FRPMyScene.m */,
-				4EE97EE00382DADA146E001F /* Spaceship.png */,
 				4EE97AA5119EF1742EF29B70 /* Images */,
 			);
 			path = FlappyBirdClone;
@@ -164,8 +161,8 @@
 				4EE97B41F5FCCCE9DF8AEA1B /* hero2.png */,
 				4EE97C7CB5BA3E7FF8669D90 /* terrain.png */,
 				4EE976FACD69F384B377A932 /* top_pipe.png */,
-				4EE97D600F72C610F17CFB4A /* background.png */,
 				4EE973D17484837374146525 /* bottom_pipe.png */,
+				4EE9747FB4624B846C2642C3 /* background.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -262,13 +259,12 @@
 				4EE9708433F72E9E2C0422E3 /* InfoPlist.strings in Resources */,
 				4EE9703CB2F973D81B18C894 /* Images.xcassets in Resources */,
 				4EE9757B212F69E3D6B191F2 /* Main.storyboard in Resources */,
-				4EE973FE20BAD46E9CC2DDC9 /* Spaceship.png in Resources */,
 				4EE97ACE2F39E69A49295328 /* hero1.png in Resources */,
 				4EE97B6C1A2ED374F8507B06 /* hero2.png in Resources */,
 				4EE97C34F04E7146BF3B1312 /* terrain.png in Resources */,
 				4EE970650268ACE8E1CBCF32 /* top_pipe.png in Resources */,
-				4EE973F3F139662B91A2C11F /* background.png in Resources */,
 				4EE977DC65BDC2DD9AC79A68 /* bottom_pipe.png in Resources */,
+				4EE97F2BA8FF4E3FBCF61419 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

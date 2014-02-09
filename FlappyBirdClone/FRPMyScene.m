@@ -26,8 +26,8 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-        self.sprite.physicsBody.velocity = CGVectorMake(0,0);
-        [self.sprite.physicsBody applyImpulse:CGVectorMake(0, 15)];
+    self.sprite.physicsBody.velocity = CGVectorMake(0, 0);
+    [self.sprite.physicsBody applyImpulse:CGVectorMake(0, 15)];
 }
 
 
@@ -46,6 +46,7 @@
     [self createMovingTerrain];
 }
 
+
 - (void)createWorld
 {
     SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:@"background"];
@@ -57,16 +58,39 @@
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
 }
 
+
 - (void)createMovingTerrain
 {
     SKTexture *terrainTexture = [SKTexture textureWithImageNamed:@"terrain"];
-    CGSize size = CGSizeMake(self.view.frame.size.width*2, self.view.frame.size.height/10.0f);
+    SKSpriteNode *node1 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
+    node1.anchorPoint = CGPointMake(0, 0);
+    node1.position = CGPointMake(0, 0);
+    SKSpriteNode *node2 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
+    node2.anchorPoint = CGPointMake(0, 0);
+    node2.position = CGPointMake(320, 0);
+
+    CGSize size = CGSizeMake(640, 50);
     self.terrain = [SKSpriteNode spriteNodeWithTexture:terrainTexture size:size];
-    CGPoint location = CGPointMake(0.0f, size.height);
-    self.terrain.scale = 2.0f;
+    CGPoint location = CGPointMake(0.0f, 1);
+    self.terrain.anchorPoint = CGPointMake(0, 0);
     self.terrain.position = location;
+    [self.terrain addChild:node1];
+    [self.terrain addChild:node2];
     [self addChild:self.terrain];
+    [self moveTerrain];
 }
+
+
+- (void)moveTerrain
+{
+    [self.terrain runAction:[SKAction repeatActionForever:
+            [SKAction sequence:@[
+                    [SKAction moveToX:-320 duration:5.0f],
+                    [SKAction moveToX:0 duration:.0f]
+            ]]]
+    ];
+}
+
 
 - (void)createHero
 {
@@ -82,25 +106,27 @@
     [self animateHero];
 }
 
--(void)animateHero
+
+- (void)animateHero
 {
     NSArray *animationFrames = @[
             [SKTexture textureWithImageNamed:@"hero1"],
             [SKTexture textureWithImageNamed:@"hero2"]
     ];
-    [self.sprite runAction:[SKAction repeatActionForever:
+    [self.sprite                              runAction:[SKAction repeatActionForever:
             [SKAction animateWithTextures:animationFrames
                              timePerFrame:0.1f
                                    resize:NO
                                   restore:YES]] withKey:@"flyingHero"];
 }
 
+
 - (void)setHeroRotationBasedOnVelocity
 {
-    if(self.sprite.physicsBody.velocity.dy > 30.0) {
-        self.sprite.zRotation = (CGFloat)M_PI/6.0f;
-    } else if(self.sprite.physicsBody.velocity.dy < -100.0) {
-        self.sprite.zRotation = -(CGFloat)M_PI/4.0f;
+    if (self.sprite.physicsBody.velocity.dy > 30.0) {
+        self.sprite.zRotation = (CGFloat) M_PI/ 6.0f;
+    } else if (self.sprite.physicsBody.velocity.dy < -100.0) {
+        self.sprite.zRotation = -(CGFloat) M_PI/ 4.0f;
     } else {
         self.sprite.zRotation = 0.0f;
     }
