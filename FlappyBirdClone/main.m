@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FRPAppDelegate.h"
+#import "EFCAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([FRPAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([EFCAppDelegate class]));
     }
 
 }

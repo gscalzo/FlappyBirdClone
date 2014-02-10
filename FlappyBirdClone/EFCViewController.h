@@ -1,5 +1,5 @@
 //
-//  FRPViewController.h
+//  EFCViewController.h
 //  FlappyBirdClone
 //
 
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface FRPViewController : UIViewController
+@interface EFCViewController : UIViewController
 
 @end

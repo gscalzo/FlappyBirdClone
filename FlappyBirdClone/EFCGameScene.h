@@ -1,5 +1,5 @@
 //
-//  FRPMyScene.h
+//  EFCGameScene.h
 //  FlappyBirdClone
 //
 
@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface FRPMyScene : SKScene
+@interface EFCGameScene : SKScene
 
 @end

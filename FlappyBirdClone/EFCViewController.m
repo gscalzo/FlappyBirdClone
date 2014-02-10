@@ -1,15 +1,15 @@
 //
-//  FRPViewController.m
+//  EFCViewController.m
 //  FlappyBirdClone
 //
 //  Created by Giordano Scalzo on 09/02/2014.
 //  Copyright (c) 2014 Effective Code Ltd. All rights reserved.
 //
 
-#import "FRPViewController.h"
-#import "FRPMyScene.h"
+#import "EFCViewController.h"
+#import "EFCMenuScene.h"
 
-@implementation FRPViewController
+@implementation EFCViewController
 
 - (void)viewDidLoad
 {
@@ -19,11 +19,11 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-    
+
     // Create and configure the scene.
-    SKScene * scene = [FRPMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [EFCMenuScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    
+
     // Present the scene.
     [skView presentScene:scene];
 }

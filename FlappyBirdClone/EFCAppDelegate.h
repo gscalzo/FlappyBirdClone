@@ -1,5 +1,5 @@
 //
-//  FRPAppDelegate.h
+//  EFCAppDelegate.h
 //  FlappyBirdClone
 //
 //  Created by Giordano Scalzo on 09/02/2014.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FRPAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EFCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
