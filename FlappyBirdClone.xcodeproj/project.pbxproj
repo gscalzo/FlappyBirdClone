@@ -11,6 +11,7 @@
 		4EE970650268ACE8E1CBCF32 /* top_pipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE976FACD69F384B377A932 /* top_pipe.png */; };
 		4EE9708433F72E9E2C0422E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97CFB4536A66617395597 /* InfoPlist.strings */; };
 		4EE972ECB89740CF90C2CF31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE971449CAE017B518350FD /* UIKit.framework */; };
+		4EE9732263ACF6D4EDBE5F4B /* YMCPhysicsDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE978C2B631B716A2CDF6A4 /* YMCPhysicsDebugger.m */; };
 		4EE9743357D96D36C3D36B89 /* FlappyBirdCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE974F73CF9FDD551A3AF31 /* FlappyBirdCloneTests.m */; };
 		4EE97456259E05CDE810115B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE976B788FA6C18C527ECA6 /* Foundation.framework */; };
 		4EE97458316E44E89C7A5080 /* EFCMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9701100F06E18F19EBBB5 /* EFCMenuScene.m */; };
@@ -18,17 +19,21 @@
 		4EE9757F5F3BE96B87160D64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE976CFBCC922B7BEADD67D /* main.m */; };
 		4EE976918DE3593D2D8DB5C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE971449CAE017B518350FD /* UIKit.framework */; };
 		4EE976A6096B7AF3B684E05D /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97C04324FEA905061CD5E /* start.png */; };
+		4EE976B850C0D4597AAFDC9D /* YMCSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97290C1D409B2275D8EA2 /* YMCSwizzler.m */; };
 		4EE976BB9C7951403C23E352 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE976B788FA6C18C527ECA6 /* Foundation.framework */; };
 		4EE977DC65BDC2DD9AC79A68 /* bottom_pipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE973D17484837374146525 /* bottom_pipe.png */; };
 		4EE977E91459AB71DF5F38A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EE974581792524453C5424F /* InfoPlist.strings */; };
 		4EE9797C21A14C46CF498961 /* EFCGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97B16A7B7E42A1AC40820 /* EFCGameScene.m */; };
 		4EE97ACE2F39E69A49295328 /* hero1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97591BC708A8AA8E30D90 /* hero1.png */; };
+		4EE97B5BDD016CCD837501BB /* YMCSKNode+PhysicsDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97191D02EFA68ACEE714E /* YMCSKNode+PhysicsDebug.m */; };
 		4EE97B6C1A2ED374F8507B06 /* hero2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97B41F5FCCCE9DF8AEA1B /* hero2.png */; };
 		4EE97C34F04E7146BF3B1312 /* terrain.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97C7CB5BA3E7FF8669D90 /* terrain.png */; };
 		4EE97D5F0A7F3BE0BE971A54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9704962A25B2419AB9983 /* CoreGraphics.framework */; };
+		4EE97ED2D50484FB9FFE87AC /* YMCSKPhysicsBody+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97441984EA0F7F2AE9667 /* YMCSKPhysicsBody+Swizzle.m */; };
 		4EE97F08C45A01A1ED2296D1 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9711D0D368309017D35F4 /* SpriteKit.framework */; };
 		4EE97F0E522875EFF9389446 /* EFCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97EB54AF921AFBBC7332A /* EFCViewController.m */; };
 		4EE97F2BA8FF4E3FBCF61419 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9747FB4624B846C2642C3 /* background.png */; };
+		4EE97F613C54C7E01ECCDBA5 /* YMCPhysicsDebugProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97C4B20E46DA8DDA16137 /* YMCPhysicsDebugProperties.m */; };
 		4EE97F668D5EF1D06239B71B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9767BF53C3DBC97A15D6B /* XCTest.framework */; };
 		4EE97FE2113B2AEC5F3E3CDD /* EFCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */; };
 /* End PBXBuildFile section */
@@ -47,11 +52,15 @@
 		4EE9701100F06E18F19EBBB5 /* EFCMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCMenuScene.m; sourceTree = "<group>"; };
 		4EE9704962A25B2419AB9983 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4EE9711D0D368309017D35F4 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		4EE971299FDD98BD089B9C7C /* YMCPhysicsDebugProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCPhysicsDebugProperties.h; sourceTree = "<group>"; };
 		4EE971449CAE017B518350FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4EE97191D02EFA68ACEE714E /* YMCSKNode+PhysicsDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMCSKNode+PhysicsDebug.m"; sourceTree = "<group>"; };
+		4EE97290C1D409B2275D8EA2 /* YMCSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCSwizzler.m; sourceTree = "<group>"; };
 		4EE973D17484837374146525 /* bottom_pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_pipe.png; sourceTree = "<group>"; };
 		4EE97403CB904E70F9597A54 /* EFCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFCAppDelegate.h; sourceTree = "<group>"; };
 		4EE974128046DACE4684BB74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EE974376DB735C0CEFA7451 /* FlappyBirdCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyBirdCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EE97441984EA0F7F2AE9667 /* YMCSKPhysicsBody+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMCSKPhysicsBody+Swizzle.m"; sourceTree = "<group>"; };
 		4EE9747FB4624B846C2642C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		4EE9748A52EC5850BCAD5FCB /* EFCMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCMenuScene.h; sourceTree = "<group>"; };
 		4EE974F73CF9FDD551A3AF31 /* FlappyBirdCloneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlappyBirdCloneTests.m; sourceTree = "<group>"; };
@@ -63,16 +72,22 @@
 		4EE976CFBCC922B7BEADD67D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4EE976FACD69F384B377A932 /* top_pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_pipe.png; sourceTree = "<group>"; };
 		4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFCAppDelegate.m; sourceTree = "<group>"; };
+		4EE978C2B631B716A2CDF6A4 /* YMCPhysicsDebugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCPhysicsDebugger.m; sourceTree = "<group>"; };
 		4EE979804FD7CB3631FDD905 /* FlappyBirdClone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlappyBirdClone-Prefix.pch"; sourceTree = "<group>"; };
 		4EE979D72037564C89EA7D10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EE97B08E2E864DB6D9AF7C5 /* FlappyBirdClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBirdClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EE97B0C6FB78B2B3020F943 /* YMCSKNode+PhysicsDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMCSKNode+PhysicsDebug.h"; sourceTree = "<group>"; };
 		4EE97B16A7B7E42A1AC40820 /* EFCGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFCGameScene.m; sourceTree = "<group>"; };
 		4EE97B41F5FCCCE9DF8AEA1B /* hero2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero2.png; sourceTree = "<group>"; };
 		4EE97B6B85FD7FD4FC05856B /* FlappyBirdCloneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "FlappyBirdCloneTests-Info.plist"; sourceTree = "<group>"; };
+		4EE97B6C255ABC571FA790EC /* YMCSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCSwizzler.h; sourceTree = "<group>"; };
 		4EE97C04324FEA905061CD5E /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
+		4EE97C4B20E46DA8DDA16137 /* YMCPhysicsDebugProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCPhysicsDebugProperties.m; sourceTree = "<group>"; };
 		4EE97C7CB5BA3E7FF8669D90 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
 		4EE97CE9268227A46AF2B724 /* FlappyBirdClone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "FlappyBirdClone-Info.plist"; sourceTree = "<group>"; };
 		4EE97CEBD8A9DE3F9F8B18B1 /* EFCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFCViewController.h; sourceTree = "<group>"; };
+		4EE97D5D7FD79BD5E896B652 /* YMCSKPhysicsBody+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMCSKPhysicsBody+Swizzle.h"; sourceTree = "<group>"; };
+		4EE97E7502C09F259DD43B42 /* YMCPhysicsDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCPhysicsDebugger.h; sourceTree = "<group>"; };
 		4EE97EB54AF921AFBBC7332A /* EFCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFCViewController.m; sourceTree = "<group>"; };
 		4EE97F8B76D29CA588164E2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +142,7 @@
 				4EE97AA5119EF1742EF29B70 /* Images */,
 				4EE9701100F06E18F19EBBB5 /* EFCMenuScene.m */,
 				4EE9748A52EC5850BCAD5FCB /* EFCMenuScene.h */,
+				4EE978624EBFA1A515EDA46E /* YMCPhysicsDebugger */,
 			);
 			path = FlappyBirdClone;
 			sourceTree = "<group>";
@@ -159,6 +175,23 @@
 				4EE974581792524453C5424F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EE978624EBFA1A515EDA46E /* YMCPhysicsDebugger */ = {
+			isa = PBXGroup;
+			children = (
+				4EE97B6C255ABC571FA790EC /* YMCSwizzler.h */,
+				4EE97290C1D409B2275D8EA2 /* YMCSwizzler.m */,
+				4EE97E7502C09F259DD43B42 /* YMCPhysicsDebugger.h */,
+				4EE978C2B631B716A2CDF6A4 /* YMCPhysicsDebugger.m */,
+				4EE97B0C6FB78B2B3020F943 /* YMCSKNode+PhysicsDebug.h */,
+				4EE97191D02EFA68ACEE714E /* YMCSKNode+PhysicsDebug.m */,
+				4EE97D5D7FD79BD5E896B652 /* YMCSKPhysicsBody+Swizzle.h */,
+				4EE97441984EA0F7F2AE9667 /* YMCSKPhysicsBody+Swizzle.m */,
+				4EE971299FDD98BD089B9C7C /* YMCPhysicsDebugProperties.h */,
+				4EE97C4B20E46DA8DDA16137 /* YMCPhysicsDebugProperties.m */,
+			);
+			path = YMCPhysicsDebugger;
 			sourceTree = "<group>";
 		};
 		4EE97AA5119EF1742EF29B70 /* Images */ = {
@@ -297,6 +330,11 @@
 				4EE97F0E522875EFF9389446 /* EFCViewController.m in Sources */,
 				4EE9797C21A14C46CF498961 /* EFCGameScene.m in Sources */,
 				4EE97458316E44E89C7A5080 /* EFCMenuScene.m in Sources */,
+				4EE976B850C0D4597AAFDC9D /* YMCSwizzler.m in Sources */,
+				4EE9732263ACF6D4EDBE5F4B /* YMCPhysicsDebugger.m in Sources */,
+				4EE97B5BDD016CCD837501BB /* YMCSKNode+PhysicsDebug.m in Sources */,
+				4EE97ED2D50484FB9FFE87AC /* YMCSKPhysicsBody+Swizzle.m in Sources */,
+				4EE97F613C54C7E01ECCDBA5 /* YMCPhysicsDebugProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

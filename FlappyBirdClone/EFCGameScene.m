@@ -8,16 +8,18 @@
 
 #import "EFCGameScene.h"
 #import "EFCMenuScene.h"
+#import "YMCPhysicsDebugger.h"
 
 typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
-    heroType    = (1 << 0),
+    heroType = (1 << 0),
     terrainType = (1 << 1),
-    pipeType    = (1 << 2)
+    pipeType = (1 << 2)
 };
 
 @interface EFCGameScene () <SKPhysicsContactDelegate>
 @property (nonatomic, weak) SKSpriteNode *sprite;
 @property (nonatomic, weak) SKSpriteNode *terrain;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation EFCGameScene
@@ -26,6 +28,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        //[YMCPhysicsDebugger init];
     }
     return self;
 }
@@ -34,7 +37,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.sprite.physicsBody.velocity = CGVectorMake(0, 0);
-    [self.sprite.physicsBody applyImpulse:CGVectorMake(0, 15)];
+    [self.sprite.physicsBody applyImpulse:CGVectorMake(0, 2)];
 }
 
 
@@ -51,6 +54,15 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     [self createWorld];
     [self createHero];
     [self createMovingTerrain];
+
+    [self schedulePipe];
+}
+
+
+- (void)schedulePipe
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
+    [self addPipe:nil];
 }
 
 
@@ -79,6 +91,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 
     CGSize size = CGSizeMake(640, 50);
     self.terrain = [SKSpriteNode spriteNodeWithTexture:terrainTexture size:size];
+    self.terrain.zPosition = 1;
     CGPoint location = CGPointMake(0.0f, 1);
     self.terrain.anchorPoint = CGPointMake(0, 0);
     self.terrain.position = location;
@@ -111,9 +124,9 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     CGPoint location = CGPointMake(50.0f, 450.0f);
     self.sprite = [SKSpriteNode spriteNodeWithImageNamed:@"hero1"];
     self.sprite.position = location;
-    [self.sprite setScale:2.0f];
     self.sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:
             CGSizeMake(self.sprite.size.width * 0.95f, self.sprite.size.height * 0.95)];
+    [self.sprite setScale:2.0f];
     self.sprite.physicsBody.dynamic = YES;
     self.sprite.physicsBody.categoryBitMask = heroType;
 
@@ -147,25 +160,23 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     }
 }
 
+
 - (void)die
 {
     [self.sprite removeAllActions];
     [self.terrain removeAllActions];
     self.sprite.physicsBody = nil;
+    [self.timer invalidate];
 
     SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
-    EFCMenuScene *newScene = [[EFCMenuScene alloc] initWithSize: self.size];
-    [self.scene.view presentScene: newScene transition: reveal];
+    EFCMenuScene *newScene = [[EFCMenuScene alloc] initWithSize:self.size];
+    [self.scene.view presentScene:newScene transition:reveal];
 }
 
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    if ((contact.bodyA == self.sprite.physicsBody && contact.bodyB == self.terrain.physicsBody) ||
-            (contact.bodyB == self.sprite.physicsBody && contact.bodyA == self.terrain.physicsBody)
-            ) {
-        [self die];
-    }
+    [self die];
 }
 
 
@@ -174,5 +185,54 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     // do whatever you need to do when a contact ends
 }
 
+
+- (void)addPipe:(NSTimer *)timer
+{
+    CGFloat offset = 580;
+    CGFloat startY = -50 + arc4random() % 4 * 60;
+
+    SKSpriteNode *topPipe = [SKSpriteNode spriteNodeWithImageNamed:@"top_pipe"];
+    topPipe.position = CGPointMake(320, startY + offset);
+    topPipe.zPosition = 0.1;
+    topPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:topPipe.size];
+    topPipe.physicsBody.dynamic = NO;
+    topPipe.physicsBody.collisionBitMask = 0;
+    topPipe.physicsBody.categoryBitMask = pipeType;
+    topPipe.physicsBody.contactTestBitMask = heroType;
+    //topPipe.scale = 2.0;
+    //topPipe.anchorPoint = CGPointMake(0, 0);
+    [self addChild:topPipe];
+
+    SKSpriteNode *bottomPipe = [SKSpriteNode spriteNodeWithImageNamed:@"bottom_pipe"];
+    bottomPipe.position = CGPointMake(320, startY);
+    bottomPipe.zPosition = 0;
+    bottomPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bottomPipe.size];
+    bottomPipe.physicsBody.dynamic = NO;
+    bottomPipe.physicsBody.collisionBitMask = 0;
+    bottomPipe.physicsBody.categoryBitMask = pipeType;
+    bottomPipe.physicsBody.contactTestBitMask = heroType;
+    //bottomPipe.scale = 2.0;
+    //bottomPipe.anchorPoint = CGPointMake(0, 1);
+    [self addChild:bottomPipe];
+
+    CGFloat finalPosition = -50;
+    CGFloat duration = 6.0;
+
+    [topPipe runAction:[SKAction repeatActionForever:
+            [SKAction sequence:@[
+                    [SKAction moveToX:finalPosition duration:duration],
+                    [SKAction removeFromParent]
+            ]]]
+    ];
+    [bottomPipe runAction:[SKAction repeatActionForever:
+            [SKAction sequence:@[
+                    [SKAction moveToX:finalPosition duration:duration],
+                    [SKAction removeFromParent]
+            ]]]
+    ];
+
+    //[self drawPhysicsBodies];
+
+}
 
 @end

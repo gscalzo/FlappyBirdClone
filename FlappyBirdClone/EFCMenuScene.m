@@ -21,7 +21,10 @@
     [self createHero];
     [self createMovingTerrain];
     [self createStartButton];
+
 }
+
+
 
 - (void)createStartButton
 {
