@@ -15,4 +15,10 @@ Ok, first implementation done!
 Not perfect, code is definitely bad, but for a few hours project is good!
 The app is still in progress, next step clean code, add sensor to count the number of pipes passed.
 
-**Screenshot** 
+**Screenshots**
+
+![start](https://raw2.github.com/gscalzo/FlappyBirdClone/master/screenshots/screenshot_start.png)
+
+![screenshot 1](https://raw2.github.com/gscalzo/FlappyBirdClone/master/screenshots/screenshot_1.png)
+
+![screenshot 2](https://raw2.github.com/gscalzo/FlappyBirdClone/master/screenshots/screenshot_2.png)
