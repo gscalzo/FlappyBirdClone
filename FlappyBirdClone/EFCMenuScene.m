@@ -8,7 +8,7 @@
 #import "EFCGameScene.h"
 
 @interface EFCMenuScene ()
-@property (nonatomic, weak)SKSpriteNode *startButton;
+@property (nonatomic, strong)SKSpriteNode *startButton;
 @end
 
 @implementation EFCMenuScene

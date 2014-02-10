@@ -17,8 +17,8 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 };
 
 @interface EFCGameScene () <SKPhysicsContactDelegate>
-@property (nonatomic, weak) SKSpriteNode *sprite;
-@property (nonatomic, weak) SKSpriteNode *terrain;
+@property (nonatomic, strong) SKSpriteNode *sprite;
+@property (nonatomic, strong) SKSpriteNode *terrain;
 @property (nonatomic, strong) NSTimer *timer;
 @end
 
