@@ -110,7 +110,7 @@
     //check if your button is tapped
     if(CGRectContainsPoint(self.startButton.frame, positionInScene))
     {
-        SKTransition *reveal = [SKTransition crossFadeWithDuration:.5f];
+        SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
         EFCGameScene *newScene = [[EFCGameScene alloc] initWithSize: self.size];
         [self.scene.view presentScene: newScene transition: reveal];
     }

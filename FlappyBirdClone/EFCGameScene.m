@@ -153,7 +153,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     [self.terrain removeAllActions];
     self.sprite.physicsBody = nil;
 
-    SKTransition *reveal = [SKTransition crossFadeWithDuration:.5f];
+    SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
     EFCMenuScene *newScene = [[EFCMenuScene alloc] initWithSize: self.size];
     [self.scene.view presentScene: newScene transition: reveal];
 }
