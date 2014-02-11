@@ -83,27 +83,33 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 {
     SKTexture *terrainTexture = [SKTexture textureWithImageNamed:@"terrain"];
     SKSpriteNode *node1 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
-    node1.anchorPoint = CGPointMake(0, 0);
+    node1.anchorPoint = CGPointMake(0, 1);
     node1.position = CGPointMake(0, 0);
     SKSpriteNode *node2 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
-    node2.anchorPoint = CGPointMake(0, 0);
+    node2.anchorPoint = CGPointMake(0, 1);
     node2.position = CGPointMake(320, 0);
 
-    CGSize size = CGSizeMake(640, 50);
+    CGSize size = CGSizeMake(640, 60);
     self.terrain = [SKSpriteNode spriteNodeWithTexture:terrainTexture size:size];
     self.terrain.zPosition = 1;
-    CGPoint location = CGPointMake(0.0f, 1);
-    self.terrain.anchorPoint = CGPointMake(0, 0);
+    CGPoint location = CGPointMake(0.0f, 60);
+    self.terrain.anchorPoint = CGPointMake(0, 1);
     self.terrain.position = location;
     [self.terrain addChild:node1];
     [self.terrain addChild:node2];
     [self addChild:self.terrain];
-    self.terrain.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.terrain.size];
-    self.terrain.physicsBody.dynamic = NO;
-    self.terrain.physicsBody.collisionBitMask = 0;
-    self.terrain.physicsBody.categoryBitMask = terrainType;
-    self.terrain.physicsBody.contactTestBitMask = heroType;
-
+    
+    
+    SKNode *terrainBody = [SKNode node];
+    terrainBody.position = CGPointMake(160.0f, 45);;
+    terrainBody.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(320, 20)];
+    terrainBody.physicsBody.dynamic = NO;
+    terrainBody.physicsBody.affectedByGravity = NO;
+    terrainBody.physicsBody.collisionBitMask = 0;
+    terrainBody.physicsBody.categoryBitMask = terrainType;
+    terrainBody.physicsBody.contactTestBitMask = heroType;
+    [self addChild:terrainBody];
+    
     [self moveTerrain];
 }
 
