@@ -31,7 +31,6 @@
     CGPoint location = (CGPoint) {CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame) + 150 };
     self.startButton = [SKSpriteNode spriteNodeWithImageNamed:@"start"];
     self.startButton.position = location;
-    [self.startButton setScale:2.0f];
     [self addChild:self.startButton];
 }
 
@@ -51,7 +50,6 @@
     CGPoint location = (CGPoint) {CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame)};
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"hero1"];
     sprite.position = location;
-    [sprite setScale:2.0f];
 
     [self addChild:sprite];
     [self animateHero:sprite];

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4EE9703CB2F973D81B18C894 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97F8B76D29CA588164E2E /* Images.xcassets */; };
-		4EE970650268ACE8E1CBCF32 /* top_pipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE976FACD69F384B377A932 /* top_pipe.png */; };
+		4EE970650268ACE8E1CBCF32 /* pipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE976FACD69F384B377A932 /* pipe.png */; };
 		4EE9708433F72E9E2C0422E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97CFB4536A66617395597 /* InfoPlist.strings */; };
 		4EE972ECB89740CF90C2CF31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE971449CAE017B518350FD /* UIKit.framework */; };
 		4EE9732263ACF6D4EDBE5F4B /* YMCPhysicsDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE978C2B631B716A2CDF6A4 /* YMCPhysicsDebugger.m */; };
@@ -21,7 +21,6 @@
 		4EE976A6096B7AF3B684E05D /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97C04324FEA905061CD5E /* start.png */; };
 		4EE976B850C0D4597AAFDC9D /* YMCSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97290C1D409B2275D8EA2 /* YMCSwizzler.m */; };
 		4EE976BB9C7951403C23E352 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE976B788FA6C18C527ECA6 /* Foundation.framework */; };
-		4EE977DC65BDC2DD9AC79A68 /* bottom_pipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE973D17484837374146525 /* bottom_pipe.png */; };
 		4EE977E91459AB71DF5F38A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EE974581792524453C5424F /* InfoPlist.strings */; };
 		4EE9797C21A14C46CF498961 /* EFCGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97B16A7B7E42A1AC40820 /* EFCGameScene.m */; };
 		4EE97ACE2F39E69A49295328 /* hero1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EE97591BC708A8AA8E30D90 /* hero1.png */; };
@@ -56,7 +55,6 @@
 		4EE971449CAE017B518350FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4EE97191D02EFA68ACEE714E /* YMCSKNode+PhysicsDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMCSKNode+PhysicsDebug.m"; sourceTree = "<group>"; };
 		4EE97290C1D409B2275D8EA2 /* YMCSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCSwizzler.m; sourceTree = "<group>"; };
-		4EE973D17484837374146525 /* bottom_pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_pipe.png; sourceTree = "<group>"; };
 		4EE97403CB904E70F9597A54 /* EFCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFCAppDelegate.h; sourceTree = "<group>"; };
 		4EE974128046DACE4684BB74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4EE974376DB735C0CEFA7451 /* FlappyBirdCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyBirdCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +68,7 @@
 		4EE9767BF53C3DBC97A15D6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4EE976B788FA6C18C527ECA6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4EE976CFBCC922B7BEADD67D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4EE976FACD69F384B377A932 /* top_pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_pipe.png; sourceTree = "<group>"; };
+		4EE976FACD69F384B377A932 /* pipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe.png; sourceTree = "<group>"; };
 		4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFCAppDelegate.m; sourceTree = "<group>"; };
 		4EE978C2B631B716A2CDF6A4 /* YMCPhysicsDebugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCPhysicsDebugger.m; sourceTree = "<group>"; };
 		4EE979804FD7CB3631FDD905 /* FlappyBirdClone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlappyBirdClone-Prefix.pch"; sourceTree = "<group>"; };
@@ -200,8 +198,7 @@
 				4EE97591BC708A8AA8E30D90 /* hero1.png */,
 				4EE97B41F5FCCCE9DF8AEA1B /* hero2.png */,
 				4EE97C7CB5BA3E7FF8669D90 /* terrain.png */,
-				4EE976FACD69F384B377A932 /* top_pipe.png */,
-				4EE973D17484837374146525 /* bottom_pipe.png */,
+				4EE976FACD69F384B377A932 /* pipe.png */,
 				4EE9747FB4624B846C2642C3 /* background.png */,
 				4EE97C04324FEA905061CD5E /* start.png */,
 			);
@@ -303,8 +300,7 @@
 				4EE97ACE2F39E69A49295328 /* hero1.png in Resources */,
 				4EE97B6C1A2ED374F8507B06 /* hero2.png in Resources */,
 				4EE97C34F04E7146BF3B1312 /* terrain.png in Resources */,
-				4EE970650268ACE8E1CBCF32 /* top_pipe.png in Resources */,
-				4EE977DC65BDC2DD9AC79A68 /* bottom_pipe.png in Resources */,
+				4EE970650268ACE8E1CBCF32 /* pipe.png in Resources */,
 				4EE97F2BA8FF4E3FBCF61419 /* background.png in Resources */,
 				4EE976A6096B7AF3B684E05D /* start.png in Resources */,
 			);
@@ -524,6 +520,7 @@
 				4EE9788C8DD0B33252C6F4D8 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EE97759C1A13591830AAF38 /* Build configuration list for PBXProject "FlappyBirdClone" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +538,7 @@
 				4EE97A2562B262C6BFE24E24 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

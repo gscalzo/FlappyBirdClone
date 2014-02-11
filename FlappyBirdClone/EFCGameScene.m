@@ -28,7 +28,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-        //[YMCPhysicsDebugger init];
+        [YMCPhysicsDebugger init];
     }
     return self;
 }
@@ -62,7 +62,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 - (void)schedulePipe
 {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
-    [self addPipe:nil];
+        [self addPipe:nil];
 }
 
 
@@ -74,8 +74,8 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     [self addChild:background];
 
     self.scaleMode = SKSceneScaleModeAspectFit;
-    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.contactDelegate = self;
+    self.physicsWorld.gravity = CGVectorMake(0, -1);
 }
 
 
@@ -126,7 +126,6 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     self.sprite.position = location;
     self.sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:
             CGSizeMake(self.sprite.size.width * 0.95f, self.sprite.size.height * 0.95)];
-    [self.sprite setScale:2.0f];
     self.sprite.physicsBody.dynamic = YES;
     self.sprite.physicsBody.categoryBitMask = heroType;
 
@@ -188,10 +187,11 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 
 - (void)addPipe:(NSTimer *)timer
 {
-    CGFloat offset = 580;
+    NSLog(@"NEW PIPE");
+    CGFloat offset = 610;
     CGFloat startY = -50 + arc4random() % 4 * 60;
 
-    SKSpriteNode *topPipe = [SKSpriteNode spriteNodeWithImageNamed:@"top_pipe"];
+    SKSpriteNode *topPipe = [SKSpriteNode spriteNodeWithImageNamed:@"pipe"];
     topPipe.position = CGPointMake(320, startY + offset);
     topPipe.zPosition = 0.1;
     topPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:topPipe.size];
@@ -199,20 +199,17 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     topPipe.physicsBody.collisionBitMask = 0;
     topPipe.physicsBody.categoryBitMask = pipeType;
     topPipe.physicsBody.contactTestBitMask = heroType;
-    //topPipe.scale = 2.0;
-    //topPipe.anchorPoint = CGPointMake(0, 0);
     [self addChild:topPipe];
 
-    SKSpriteNode *bottomPipe = [SKSpriteNode spriteNodeWithImageNamed:@"bottom_pipe"];
+    SKSpriteNode *bottomPipe = [SKSpriteNode spriteNodeWithImageNamed:@"pipe"];
     bottomPipe.position = CGPointMake(320, startY);
+    bottomPipe.yScale = -1.0f;
     bottomPipe.zPosition = 0;
     bottomPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bottomPipe.size];
     bottomPipe.physicsBody.dynamic = NO;
     bottomPipe.physicsBody.collisionBitMask = 0;
     bottomPipe.physicsBody.categoryBitMask = pipeType;
     bottomPipe.physicsBody.contactTestBitMask = heroType;
-    //bottomPipe.scale = 2.0;
-    //bottomPipe.anchorPoint = CGPointMake(0, 1);
     [self addChild:bottomPipe];
 
     CGFloat finalPosition = -50;
@@ -231,8 +228,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
             ]]]
     ];
 
-    //[self drawPhysicsBodies];
-
+    [self drawPhysicsBodies];
 }
 
 @end
