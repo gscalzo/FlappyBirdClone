@@ -14,9 +14,10 @@
 
 @interface EFCGameScene () <SKPhysicsContactDelegate>
 @property (nonatomic, strong) SKSpriteNode *sprite;
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *pipeTimer;
 @property (nonatomic, strong) SKAction *pipeSound;
 @property (nonatomic, strong) SKAction *terrainSound;
+@property (nonatomic, assign) NSUInteger score;
 @end
 
 @implementation EFCGameScene
@@ -61,10 +62,9 @@
 
 - (void)schedulePipe
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
-        [self addPipe:nil];
+    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
+    [self addPipe:nil];
 }
-
 
 - (void)createWorld
 {
@@ -124,7 +124,7 @@
 {
     [self.sprite removeAllActions];
     self.sprite.physicsBody = nil;
-    [self.timer invalidate];
+    [self.pipeTimer invalidate];
 
     SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
     EFCMenuScene *newScene = [[EFCMenuScene alloc] initWithSize:self.size];
@@ -136,6 +136,8 @@
 {
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (heroType | pipeType)) {
+        [self.sprite.physicsBody applyImpulse:CGVectorMake(0, -10)];
+
         [self runAction:self.pipeSound completion:^{
          [self die];
         }];
