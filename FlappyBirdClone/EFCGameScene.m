@@ -15,6 +15,8 @@
 @interface EFCGameScene () <SKPhysicsContactDelegate>
 @property (nonatomic, strong) SKSpriteNode *sprite;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) SKAction *pipeSound;
+@property (nonatomic, strong) SKAction *terrainSound;
 @end
 
 @implementation EFCGameScene
@@ -46,6 +48,8 @@
 {
     [super didMoveToView:view];
 
+    self.pipeSound = [SKAction playSoundFileNamed:@"pipe.mp3" waitForCompletion:YES];
+    self.terrainSound = [SKAction playSoundFileNamed:@"punch.mp3" waitForCompletion:YES];
     [self createWorld];
     [self createHero];
 
@@ -132,11 +136,14 @@
 {
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (heroType | pipeType)) {
-        [SKAction playSoundFileNamed:@"pipe.mp3" waitForCompletion:NO];
+        [self runAction:self.pipeSound completion:^{
+         [self die];
+        }];
     } else if (collision == (heroType | terrainType)) {
-        [SKAction playSoundFileNamed:@"punch.mp3" waitForCompletion:NO];      
+        [self runAction:self.terrainSound completion:^{
+             [self die];
+         }];
     }
-    [self die];
 }
 
 
