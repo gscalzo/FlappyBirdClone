@@ -35,6 +35,7 @@
 		4EE97F613C54C7E01ECCDBA5 /* YMCPhysicsDebugProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE97C4B20E46DA8DDA16137 /* YMCPhysicsDebugProperties.m */; };
 		4EE97F668D5EF1D06239B71B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9767BF53C3DBC97A15D6B /* XCTest.framework */; };
 		4EE97FE2113B2AEC5F3E3CDD /* EFCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */; };
+		EE1B689718AADFF700D9BBAE /* EFCTerrain.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1B689618AADFF700D9BBAE /* EFCTerrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,9 @@
 		4EE97E7502C09F259DD43B42 /* YMCPhysicsDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCPhysicsDebugger.h; sourceTree = "<group>"; };
 		4EE97EB54AF921AFBBC7332A /* EFCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFCViewController.m; sourceTree = "<group>"; };
 		4EE97F8B76D29CA588164E2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EE1B689518AADFF700D9BBAE /* EFCTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCTerrain.h; sourceTree = "<group>"; };
+		EE1B689618AADFF700D9BBAE /* EFCTerrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCTerrain.m; sourceTree = "<group>"; };
+		EE1B689918AAE0F800D9BBAE /* EFCConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFCConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 		4EE971BB42413E5DB9F59D11 /* FlappyBirdClone */ = {
 			isa = PBXGroup;
 			children = (
+				EE1B689A18AAE31600D9BBAE /* Scenes */,
+				EE1B689818AAE00B00D9BBAE /* Nodes */,
 				4EE97BE5CA546445B2A3DC09 /* Supporting Files */,
 				4EE97403CB904E70F9597A54 /* EFCAppDelegate.h */,
 				4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */,
@@ -135,11 +141,7 @@
 				4EE974A5A5847D6EE172ADA5 /* Main.storyboard */,
 				4EE97CEBD8A9DE3F9F8B18B1 /* EFCViewController.h */,
 				4EE97EB54AF921AFBBC7332A /* EFCViewController.m */,
-				4EE97540E77ECEB447996D7F /* EFCGameScene.h */,
-				4EE97B16A7B7E42A1AC40820 /* EFCGameScene.m */,
 				4EE97AA5119EF1742EF29B70 /* Images */,
-				4EE9701100F06E18F19EBBB5 /* EFCMenuScene.m */,
-				4EE9748A52EC5850BCAD5FCB /* EFCMenuScene.h */,
 				4EE978624EBFA1A515EDA46E /* YMCPhysicsDebugger */,
 			);
 			path = FlappyBirdClone;
@@ -223,6 +225,27 @@
 				4EE974F73CF9FDD551A3AF31 /* FlappyBirdCloneTests.m */,
 			);
 			path = FlappyBirdCloneTests;
+			sourceTree = "<group>";
+		};
+		EE1B689818AAE00B00D9BBAE /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				EE1B689518AADFF700D9BBAE /* EFCTerrain.h */,
+				EE1B689618AADFF700D9BBAE /* EFCTerrain.m */,
+				EE1B689918AAE0F800D9BBAE /* EFCConstants.h */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		EE1B689A18AAE31600D9BBAE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4EE9701100F06E18F19EBBB5 /* EFCMenuScene.m */,
+				4EE9748A52EC5850BCAD5FCB /* EFCMenuScene.h */,
+				4EE97540E77ECEB447996D7F /* EFCGameScene.h */,
+				4EE97B16A7B7E42A1AC40820 /* EFCGameScene.m */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +346,7 @@
 			files = (
 				4EE9757F5F3BE96B87160D64 /* main.m in Sources */,
 				4EE97FE2113B2AEC5F3E3CDD /* EFCAppDelegate.m in Sources */,
+				EE1B689718AADFF700D9BBAE /* EFCTerrain.m in Sources */,
 				4EE97F0E522875EFF9389446 /* EFCViewController.m in Sources */,
 				4EE9797C21A14C46CF498961 /* EFCGameScene.m in Sources */,
 				4EE97458316E44E89C7A5080 /* EFCMenuScene.m in Sources */,

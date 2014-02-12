@@ -9,16 +9,11 @@
 #import "EFCGameScene.h"
 #import "EFCMenuScene.h"
 #import "YMCPhysicsDebugger.h"
-
-typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
-    heroType = (1 << 0),
-    terrainType = (1 << 1),
-    pipeType = (1 << 2)
-};
+#import "EFCConstants.h"
+#import "EFCTerrain.h"
 
 @interface EFCGameScene () <SKPhysicsContactDelegate>
 @property (nonatomic, strong) SKSpriteNode *sprite;
-@property (nonatomic, strong) SKSpriteNode *terrain;
 @property (nonatomic, strong) NSTimer *timer;
 @end
 
@@ -28,7 +23,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-        [YMCPhysicsDebugger init];
+        //[YMCPhysicsDebugger init];
     }
     return self;
 }
@@ -37,7 +32,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.sprite.physicsBody.velocity = CGVectorMake(0, 0);
-    [self.sprite.physicsBody applyImpulse:CGVectorMake(0, 2)];
+    [self.sprite.physicsBody applyImpulse:CGVectorMake(0, 3)];
 }
 
 
@@ -53,8 +48,9 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 
     [self createWorld];
     [self createHero];
-    [self createMovingTerrain];
 
+    [EFCTerrain addNewNodeTo:self];
+    
     [self schedulePipe];
 }
 
@@ -75,53 +71,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 
     self.scaleMode = SKSceneScaleModeAspectFit;
     self.physicsWorld.contactDelegate = self;
-    self.physicsWorld.gravity = CGVectorMake(0, -1);
-}
-
-
-- (void)createMovingTerrain
-{
-    SKTexture *terrainTexture = [SKTexture textureWithImageNamed:@"terrain"];
-    SKSpriteNode *node1 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
-    node1.anchorPoint = CGPointMake(0, 1);
-    node1.position = CGPointMake(0, 0);
-    SKSpriteNode *node2 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
-    node2.anchorPoint = CGPointMake(0, 1);
-    node2.position = CGPointMake(320, 0);
-
-    CGSize size = CGSizeMake(640, 60);
-    self.terrain = [SKSpriteNode spriteNodeWithTexture:terrainTexture size:size];
-    self.terrain.zPosition = 1;
-    CGPoint location = CGPointMake(0.0f, 60);
-    self.terrain.anchorPoint = CGPointMake(0, 1);
-    self.terrain.position = location;
-    [self.terrain addChild:node1];
-    [self.terrain addChild:node2];
-    [self addChild:self.terrain];
-    
-    
-    SKNode *terrainBody = [SKNode node];
-    terrainBody.position = CGPointMake(160.0f, 45);;
-    terrainBody.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(320, 20)];
-    terrainBody.physicsBody.dynamic = NO;
-    terrainBody.physicsBody.affectedByGravity = NO;
-    terrainBody.physicsBody.collisionBitMask = 0;
-    terrainBody.physicsBody.categoryBitMask = terrainType;
-    terrainBody.physicsBody.contactTestBitMask = heroType;
-    [self addChild:terrainBody];
-    
-    [self moveTerrain];
-}
-
-
-- (void)moveTerrain
-{
-    [self.terrain runAction:[SKAction repeatActionForever:
-            [SKAction sequence:@[
-                    [SKAction moveToX:-320 duration:5.0f],
-                    [SKAction moveToX:0 duration:.0f]
-            ]]]
-    ];
+    self.physicsWorld.gravity = CGVectorMake(0, -3);
 }
 
 
@@ -169,7 +119,6 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
 - (void)die
 {
     [self.sprite removeAllActions];
-    [self.terrain removeAllActions];
     self.sprite.physicsBody = nil;
     [self.timer invalidate];
 
@@ -234,7 +183,7 @@ typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
             ]]]
     ];
 
-    [self drawPhysicsBodies];
+    //t[self drawPhysicsBodies];
 }
 
 @end

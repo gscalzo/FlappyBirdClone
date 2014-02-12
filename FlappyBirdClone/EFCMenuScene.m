@@ -6,6 +6,7 @@
 
 #import "EFCMenuScene.h"
 #import "EFCGameScene.h"
+#import "EFCTerrain.h"
 
 @interface EFCMenuScene ()
 @property (nonatomic, strong)SKSpriteNode *startButton;
@@ -19,7 +20,7 @@
 
     [self createWorld];
     [self createHero];
-    [self createMovingTerrain];
+    [EFCTerrain addNewNodeTo:self];
     [self createStartButton];
 
 }
@@ -68,41 +69,6 @@
                                    resize:NO
                                   restore:YES]] withKey:@"flyingHero"];
 }
-
-- (void)createMovingTerrain
-{
-    SKTexture *terrainTexture = [SKTexture textureWithImageNamed:@"terrain"];
-    SKSpriteNode *node1 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
-    node1.anchorPoint = CGPointMake(0, 0);
-    node1.position = CGPointMake(0, 0);
-    SKSpriteNode *node2 = [SKSpriteNode spriteNodeWithTexture:terrainTexture];
-    node2.anchorPoint = CGPointMake(0, 0);
-
-    node2.position = CGPointMake(320, 0);
-
-    CGSize size = CGSizeMake(640, 50);
-    SKSpriteNode *terrain = [SKSpriteNode spriteNodeWithTexture:terrainTexture size:size];
-    CGPoint location = CGPointMake(0.0f, 1);
-    terrain.anchorPoint = CGPointMake(0, 0);
-    terrain.position = location;
-    [terrain addChild:node1];
-    [terrain addChild:node2];
-    [self addChild:terrain];
-
-    [self moveTerrain:terrain];
-}
-
-
-- (void)moveTerrain:(SKSpriteNode *)terrain
-{
-    [terrain runAction:[SKAction repeatActionForever:
-            [SKAction sequence:@[
-                    [SKAction moveToX:-320 duration:5.0f],
-                    [SKAction moveToX:0 duration:.0f]
-            ]]]
-    ];
-}
-
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
