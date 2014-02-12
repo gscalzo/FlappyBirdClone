@@ -30,6 +30,8 @@
 		4EE97F668D5EF1D06239B71B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9767BF53C3DBC97A15D6B /* XCTest.framework */; };
 		4EE97FE2113B2AEC5F3E3CDD /* EFCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */; };
 		EE1B689718AADFF700D9BBAE /* EFCTerrain.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1B689618AADFF700D9BBAE /* EFCTerrain.m */; };
+		EEACDCCD18ABDAC8001EBA1F /* pipe.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEACDCC918ABDAC8001EBA1F /* pipe.mp3 */; };
+		EEACDCCF18ABDAC8001EBA1F /* punch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEACDCCB18ABDAC8001EBA1F /* punch.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		EE1B689518AADFF700D9BBAE /* EFCTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCTerrain.h; sourceTree = "<group>"; };
 		EE1B689618AADFF700D9BBAE /* EFCTerrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCTerrain.m; sourceTree = "<group>"; };
 		EE1B689918AAE0F800D9BBAE /* EFCConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFCConstants.h; sourceTree = "<group>"; };
+		EEACDCC918ABDAC8001EBA1F /* pipe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipe.mp3; sourceTree = "<group>"; };
+		EEACDCCB18ABDAC8001EBA1F /* punch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = punch.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		4EE971BB42413E5DB9F59D11 /* FlappyBirdClone */ = {
 			isa = PBXGroup;
 			children = (
+				EEACDCC818ABDAC8001EBA1F /* Sounds */,
 				EE1B689A18AAE31600D9BBAE /* Scenes */,
 				EE1B689818AAE00B00D9BBAE /* Nodes */,
 				4EE97BE5CA546445B2A3DC09 /* Supporting Files */,
@@ -222,6 +227,15 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		EEACDCC818ABDAC8001EBA1F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				EEACDCC918ABDAC8001EBA1F /* pipe.mp3 */,
+				EEACDCCB18ABDAC8001EBA1F /* punch.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +305,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEACDCCD18ABDAC8001EBA1F /* pipe.mp3 in Resources */,
+				EEACDCCF18ABDAC8001EBA1F /* punch.mp3 in Resources */,
 				4EE9708433F72E9E2C0422E3 /* InfoPlist.strings in Resources */,
 				4EE9703CB2F973D81B18C894 /* Images.xcassets in Resources */,
 				4EE9757B212F69E3D6B191F2 /* Main.storyboard in Resources */,

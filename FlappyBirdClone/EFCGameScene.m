@@ -130,6 +130,12 @@
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
+    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
+    if (collision == (heroType | pipeType)) {
+        [SKAction playSoundFileNamed:@"pipe.mp3" waitForCompletion:NO];
+    } else if (collision == (heroType | terrainType)) {
+        [SKAction playSoundFileNamed:@"punch.mp3" waitForCompletion:NO];      
+    }
     [self die];
 }
 
