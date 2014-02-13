@@ -12,7 +12,8 @@
 typedef NS_OPTIONS(NSUInteger, CollisionCategory) {
     heroType    = (1 << 0),
     terrainType = (1 << 1),
-    pipeType    = (1 << 2)
+    pipeType    = (1 << 2),
+    holeType    = (1 << 3)
 };
 
 #endif
