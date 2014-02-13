@@ -22,3 +22,7 @@ The app is still in progress, next step clean code, add sensor to count the numb
 ![screenshot 1](https://raw2.github.com/gscalzo/FlappyBirdClone/master/screenshots/screenshot_1.png)
 
 ![screenshot 2](https://raw2.github.com/gscalzo/FlappyBirdClone/master/screenshots/screenshot_2.png)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gscalzo/flappybirdclone/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
