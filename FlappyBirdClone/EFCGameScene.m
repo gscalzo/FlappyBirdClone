@@ -11,9 +11,10 @@
 #import "YMCPhysicsDebugger.h"
 #import "EFCConstants.h"
 #import "EFCTerrain.h"
+#import "EFCHero.h"
 
 @interface EFCGameScene () <SKPhysicsContactDelegate>
-@property (nonatomic, strong) SKSpriteNode *hero;
+@property (nonatomic, strong) EFCHero *hero;
 @property (nonatomic, strong) SKLabelNode *scoreLabel;
 @property (nonatomic, strong) NSTimer *pipeTimer;
 @property (nonatomic, strong) SKAction *pipeSound;
@@ -22,6 +23,8 @@
 @end
 
 @implementation EFCGameScene
+
+#pragma mark - Scene Cycle
 
 - (id)initWithSize:(CGSize)size
 {
@@ -32,26 +35,32 @@
     return self;
 }
 
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.hero.physicsBody.velocity = CGVectorMake(0, 0);
-    [self.hero.physicsBody applyImpulse:CGVectorMake(0, 3)];
+    [self.hero flap];
 }
-
 
 - (void)update:(CFTimeInterval)currentTime
 {
-    [self setHeroRotationBasedOnVelocity];
+    [self.hero update];
 }
 
-
-- (void)createScoreLabel
+- (void)didMoveToView:(SKView *)view
 {
-    self.scoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
-    [self.scoreLabel setPosition:CGPointMake(self.size.width/2, self.size.height-50)];
-    [self.scoreLabel setText:[NSString stringWithFormat:@"%@", [NSNumber numberWithInteger:self.score]]];
-    [self addChild:self.scoreLabel];
+    [super didMoveToView:view];
+    [self setup];
+}
+
+#pragma mark - Creators
+
+- (void)setup
+{
+    [self preloadSounds];
+    [self createWorld];
+    [self createScoreLabel];
+    [self createHero];
+    [self createTerrain];
+    [self schedulePipe];
 }
 
 - (void)preloadSounds
@@ -60,24 +69,12 @@
     self.terrainSound = [SKAction playSoundFileNamed:@"punch.mp3" waitForCompletion:YES];
 }
 
-- (void)didMoveToView:(SKView *)view
+- (void)createScoreLabel
 {
-    [super didMoveToView:view];
-
-    [self preloadSounds];
-    [self createWorld];
-    [self createHero];
-    [self createScoreLabel];
-
-    [EFCTerrain addNewNodeTo:self];
-    
-    [self schedulePipe];
-}
-
-- (void)schedulePipe
-{
-    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
-    [self addPipe:nil];
+    self.scoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+    [self.scoreLabel setPosition:CGPointMake(self.size.width/2, self.size.height-50)];
+    [self.scoreLabel setText:[NSString stringWithFormat:@"%@", [NSNumber numberWithInteger:self.score]]];
+    [self addChild:self.scoreLabel];
 }
 
 - (void)createWorld
@@ -92,88 +89,33 @@
     self.physicsWorld.gravity = CGVectorMake(0, -3);
 }
 
-
 - (void)createHero
 {
-    CGPoint location = CGPointMake(50.0f, 450.0f);
-    self.hero = [SKSpriteNode spriteNodeWithImageNamed:@"hero1"];
-    self.hero.position = location;
-    self.hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:
-            CGSizeMake(self.hero.size.width * 0.95f, self.hero.size.height * 0.95)];
-    self.hero.physicsBody.dynamic = YES;
-    self.hero.physicsBody.collisionBitMask = pipeType;
-    self.hero.physicsBody.categoryBitMask = heroType;
-    self.hero.physicsBody.contactTestBitMask |= holeType;
-
-    [self addChild:self.hero];
-    [self animateHero];
+    self.hero = [EFCHero createNodeOn:self];
+    self.hero.position = CGPointMake(50.0f, 450.0f);
 }
 
-
-- (void)animateHero
+- (void)createTerrain
 {
-    NSArray *animationFrames = @[
-            [SKTexture textureWithImageNamed:@"hero1"],
-            [SKTexture textureWithImageNamed:@"hero2"]
-    ];
-    [self.hero                              runAction:[SKAction repeatActionForever:
-            [SKAction animateWithTextures:animationFrames
-                             timePerFrame:0.1f
-                                   resize:NO
-                                  restore:YES]] withKey:@"flyingHero"];
+    [EFCTerrain addNewNodeTo:self];
 }
 
+#pragma mark - Actions
 
-- (void)setHeroRotationBasedOnVelocity
+- (void)schedulePipe
 {
-    if (self.hero.physicsBody.velocity.dy > 30.0) {
-        self.hero.zRotation = (CGFloat) M_PI/ 6.0f;
-    } else if (self.hero.physicsBody.velocity.dy < -100.0) {
-        self.hero.zRotation = -(CGFloat) M_PI/ 4.0f;
-    } else {
-        self.hero.zRotation = 0.0f;
-    }
+    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
+    [self addPipe:nil];
 }
 
 
 - (void)die
 {
-    [self.hero removeAllActions];
-    self.hero.physicsBody = nil;
     [self.pipeTimer invalidate];
 
     SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
     EFCMenuScene *newScene = [[EFCMenuScene alloc] initWithSize:self.size];
     [self.scene.view presentScene:newScene transition:reveal];
-}
-
-
-- (void)didBeginContact:(SKPhysicsContact *)contact
-{
-    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
-    if (collision == (heroType | pipeType)) {
-        [self.hero.physicsBody applyImpulse:CGVectorMake(0, -10)];
-
-        [self runAction:self.terrainSound completion:^{
-         [self die];
-        }];
-    } else if (collision == (heroType | terrainType)) {
-        [self runAction:self.terrainSound completion:^{
-             [self die];
-         }];
-    }
-}
-
-
-- (void)didEndContact:(SKPhysicsContact *)contact
-{
-    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
-    if (collision == (heroType | holeType)) {
-        self.score++;
-        [self runAction:self.pipeSound completion:^{
-            [self renderScore];
-        }];
-    }
 }
 
 
@@ -242,5 +184,35 @@
 {
     [self.scoreLabel setText:[NSString stringWithFormat:@"%d", self.score]];
 }
+
+#pragma mark - SKPhysicsContactDelegate
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
+    if (collision == (heroType | pipeType)) {
+        [self.hero goDown];
+        
+        [self runAction:self.terrainSound completion:^{
+            [self die];
+        }];
+    } else if (collision == (heroType | terrainType)) {
+        [self runAction:self.terrainSound completion:^{
+            [self die];
+        }];
+    }
+}
+
+- (void)didEndContact:(SKPhysicsContact *)contact
+{
+    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
+    if (collision == (heroType | holeType)) {
+        self.score++;
+        [self runAction:self.pipeSound completion:^{
+            [self renderScore];
+        }];
+    }
+}
+
 
 @end

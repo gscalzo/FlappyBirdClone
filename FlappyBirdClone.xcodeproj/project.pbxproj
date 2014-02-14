@@ -30,6 +30,7 @@
 		4EE97F668D5EF1D06239B71B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9767BF53C3DBC97A15D6B /* XCTest.framework */; };
 		4EE97FE2113B2AEC5F3E3CDD /* EFCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE977C76ED84ACEC3D4A962 /* EFCAppDelegate.m */; };
 		EE1B689718AADFF700D9BBAE /* EFCTerrain.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1B689618AADFF700D9BBAE /* EFCTerrain.m */; };
+		EE30C70518AD8A7F00D7DC53 /* EFCHero.m in Sources */ = {isa = PBXBuildFile; fileRef = EE30C70418AD8A7F00D7DC53 /* EFCHero.m */; };
 		EEACDCCD18ABDAC8001EBA1F /* pipe.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEACDCC918ABDAC8001EBA1F /* pipe.mp3 */; };
 		EEACDCCF18ABDAC8001EBA1F /* punch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEACDCCB18ABDAC8001EBA1F /* punch.mp3 */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,8 @@
 		EE1B689518AADFF700D9BBAE /* EFCTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCTerrain.h; sourceTree = "<group>"; };
 		EE1B689618AADFF700D9BBAE /* EFCTerrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCTerrain.m; sourceTree = "<group>"; };
 		EE1B689918AAE0F800D9BBAE /* EFCConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFCConstants.h; sourceTree = "<group>"; };
+		EE30C70318AD8A7F00D7DC53 /* EFCHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCHero.h; sourceTree = "<group>"; };
+		EE30C70418AD8A7F00D7DC53 /* EFCHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCHero.m; sourceTree = "<group>"; };
 		EEACDCC918ABDAC8001EBA1F /* pipe.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pipe.mp3; sourceTree = "<group>"; };
 		EEACDCCB18ABDAC8001EBA1F /* punch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = punch.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,9 +212,11 @@
 		EE1B689818AAE00B00D9BBAE /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				EE1B689918AAE0F800D9BBAE /* EFCConstants.h */,
 				EE1B689518AADFF700D9BBAE /* EFCTerrain.h */,
 				EE1B689618AADFF700D9BBAE /* EFCTerrain.m */,
-				EE1B689918AAE0F800D9BBAE /* EFCConstants.h */,
+				EE30C70318AD8A7F00D7DC53 /* EFCHero.h */,
+				EE30C70418AD8A7F00D7DC53 /* EFCHero.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				4EE97FE2113B2AEC5F3E3CDD /* EFCAppDelegate.m in Sources */,
 				EE1B689718AADFF700D9BBAE /* EFCTerrain.m in Sources */,
 				4EE97F0E522875EFF9389446 /* EFCViewController.m in Sources */,
+				EE30C70518AD8A7F00D7DC53 /* EFCHero.m in Sources */,
 				4EE9797C21A14C46CF498961 /* EFCGameScene.m in Sources */,
 				4EE97458316E44E89C7A5080 /* EFCMenuScene.m in Sources */,
 				4EE976B850C0D4597AAFDC9D /* YMCSwizzler.m in Sources */,
