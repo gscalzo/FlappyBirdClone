@@ -12,6 +12,7 @@
 #import "EFCConstants.h"
 #import "EFCTerrain.h"
 #import "EFCHero.h"
+#import "EFCPipe.h"
 
 @interface EFCGameScene () <SKPhysicsContactDelegate>
 @property (nonatomic, strong) EFCHero *hero;
@@ -104,10 +105,13 @@
 
 - (void)schedulePipe
 {
-    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
-    [self addPipe:nil];
+    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
 }
 
+- (void)addPipe:(NSTimer *)timer
+{
+    [EFCPipe addNewNodeTo:self];
+}
 
 - (void)die
 {
@@ -118,67 +122,7 @@
     [self.scene.view presentScene:newScene transition:reveal];
 }
 
-
-- (void)addPipe:(NSTimer *)timer
-{
-    CGFloat offset = 610;
-    CGFloat startY = -50 + arc4random() % 4 * 60;
-    CGFloat finalPosition = -50;
-    CGFloat duration = 6.0;
-
-    SKSpriteNode *topPipe = [SKSpriteNode spriteNodeWithImageNamed:@"pipe"];
-    topPipe.position = CGPointMake(320, startY + offset);
-    topPipe.zPosition = 0.1;
-    topPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:topPipe.size];
-    topPipe.physicsBody.dynamic = NO;
-    topPipe.physicsBody.collisionBitMask = heroType;
-    topPipe.physicsBody.categoryBitMask = pipeType;
-    topPipe.physicsBody.contactTestBitMask = heroType;
-    [self addChild:topPipe];
-    [topPipe runAction:[SKAction repeatActionForever:
-                        [SKAction sequence:@[
-                                             [SKAction moveToX:finalPosition duration:duration],
-                                             [SKAction removeFromParent]
-                                             ]]]
-     ];
-    
-    SKSpriteNode *bottomPipe = [SKSpriteNode spriteNodeWithImageNamed:@"pipe"];
-    bottomPipe.position = CGPointMake(320, startY);
-    bottomPipe.yScale = -1.0f;
-    bottomPipe.zPosition = 0;
-    bottomPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bottomPipe.size];
-    bottomPipe.physicsBody.dynamic = NO;
-    bottomPipe.physicsBody.collisionBitMask = heroType;
-    bottomPipe.physicsBody.categoryBitMask = pipeType;
-    bottomPipe.physicsBody.contactTestBitMask = heroType;
-    [self addChild:bottomPipe];
-    [bottomPipe runAction:[SKAction repeatActionForever:
-            [SKAction sequence:@[
-                    [SKAction moveToX:finalPosition duration:duration],
-                    [SKAction removeFromParent]
-            ]]]
-    ];
-
-    CGSize holeSize = CGSizeMake(bottomPipe.size.width, 75);
-    SKSpriteNode *holeInPipe = [SKSpriteNode node];
-    holeInPipe.position = CGPointMake(320, startY+bottomPipe.size.height/2.0f+35);
-    holeInPipe.yScale = -1.0f;
-    holeInPipe.zPosition = 0;
-    holeInPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:holeSize];
-    holeInPipe.physicsBody.dynamic = NO;
-    holeInPipe.physicsBody.collisionBitMask = 0x00000000;
-    holeInPipe.physicsBody.categoryBitMask = holeType;
-    holeInPipe.physicsBody.contactTestBitMask = 0x00000000;
-    [self addChild:holeInPipe];
-    [holeInPipe runAction:[SKAction repeatActionForever:
-                           [SKAction sequence:@[
-                                                [SKAction moveToX:finalPosition duration:duration],
-                                                [SKAction removeFromParent]
-                                                ]]]
-     ];
-
-    //t[self drawPhysicsBodies];
-}
+#pragma mark - Score
 
 - (void)renderScore
 {
