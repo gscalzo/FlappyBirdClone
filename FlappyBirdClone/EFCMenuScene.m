@@ -15,6 +15,7 @@
 
 @implementation EFCMenuScene
 
+#pragma mark - Life Cycle
 
 - (void)didMoveToView:(SKView *)view
 {
@@ -23,17 +24,7 @@
     [self setup];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint positionInScene = [touch locationInNode:self];
-    if(CGRectContainsPoint(self.startButton.frame, positionInScene))
-    {
-        SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
-        EFCGameScene *newScene = [[EFCGameScene alloc] initWithSize: self.size];
-        [self.scene.view presentScene: newScene transition: reveal];
-    }
-}
+#pragma mark - Creators
 
 - (void)setup
 {
@@ -65,7 +56,21 @@
 {
     SKSpriteNode *hero = [EFCHero createSpriteOn:self];
     hero.position = (CGPoint) {CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame)};;
-
 }
+
+#pragma mark - Api
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint positionInScene = [touch locationInNode:self];
+    if(CGRectContainsPoint(self.startButton.frame, positionInScene))
+    {
+        SKTransition *reveal = [SKTransition fadeWithDuration:.5f];
+        EFCGameScene *newScene = [[EFCGameScene alloc] initWithSize: self.size];
+        [self.scene.view presentScene: newScene transition: reveal];
+    }
+}
+
 
 @end
