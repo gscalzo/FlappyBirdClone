@@ -105,7 +105,8 @@
 
 - (void)schedulePipe
 {
-    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
+    self.pipeTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(addPipe:) userInfo:nil repeats:YES];
+    [self addPipe:nil];
 }
 
 - (void)addPipe:(NSTimer *)timer
